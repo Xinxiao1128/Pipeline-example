@@ -28,18 +28,12 @@ def run_pipeline():
         name="Pipeline demo", project="examples", version="0.0.1", add_pipeline_tags=False
     )
 
-    pipe.add_parameter(
-        "url",
-        "dataset_url",
-    )
-
     pipe.set_default_execution_queue("pipeline")
 
     pipe.add_step(
         name="stage_data",
         base_task_project="examples",
         base_task_name="Pipeline step 1 dataset artifact",
-        parameter_override={"General/dataset_url": "${pipeline.url}"},
     )
 
     pipe.add_step(
